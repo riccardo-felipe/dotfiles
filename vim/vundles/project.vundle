@@ -5,3 +5,6 @@ Bundle 'JazzCore/ctrlp-cmatcher'
 Bundle 'junegunn/fzf'
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-session"
+Bundle "MarcWeber/vim-addon-local-vimrc"
+Bundle "janko-m/vim-test"
+Bundle "tpope/vim-dispatch.git"

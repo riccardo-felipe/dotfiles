@@ -114,5 +114,62 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
+" ================ Powerline ========================
+set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" ============== Airline and Appearance =============
+let g:airline_powerline_fonts = 1
+" show buffers as tabs
+let g:airline#extensions#tabline#enabled = 1
+
+" =============== Javascript Configs ================
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+set foldmethod=syntax
+
+map <leader><lt> :exec &conceallevel ? "set conceallevel=0" : "set conceallevel=1"<CR>
+let g:javascript_conceal_function             = "ƒ"
+let g:javascript_conceal_null                 = "ø"
+let g:javascript_conceal_this                 = "@"
+let g:javascript_conceal_return               = "⇚"
+let g:javascript_conceal_undefined            = "¿"
+let g:javascript_conceal_NaN                  = "ℕ"
+let g:javascript_conceal_prototype            = "¶"
+let g:javascript_conceal_static               = "•"
+let g:javascript_conceal_super                = "Ω"
+let g:javascript_conceal_arrow_function       = "⇒"
+let g:javascript_conceal_noarg_arrow_function = "🞅"
+let g:javascript_conceal_underscore_arrow_function = "🞅"
+set tags=./git/tags
+
+" ================ Automatic Test Execution ===============
+let g:test#javascript#mocha#executable = 'NODE_ENV=test node_modules/.bin/mocha'
+" function! EchoStrategy(cmd)
+"   echo 'It works! Command for running tests: ' . a:cmd
+" endfunction
+
+" let g:test#custom_strategies = {'echo': function('EchoStrategy')}
+let g:test#strategy = 'basic'
+
+nmap <silent> \\ :TestNearest --inspect --debug-brk <CR>
+nmap <silent> \z :TestFile --inspect --debug-brk <CR>
+nmap <silent> \x :TestVisit --inspect --debug-brk <CR>
+
+nmap <silent> \. :TestNearest <CR>
+nmap <silent> \; :TestFile <CR>
+nmap <silent> \/ :TestVisit <CR>
+
+" ======================  GitGutter =======================
+let g:gitgutter_override_sign_column_highlight = 0
+
+" Hybrid line numbers - Absolute and Relative
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
